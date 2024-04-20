@@ -37,44 +37,22 @@ class HomeScreen extends StatelessWidget {
             );
           } else if (snapshot.hasData) {
             return Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10.0),
+              padding: const EdgeInsets.only(left: 10.0, right: 10.0, bottom: 10.0,),
               child: GridView.builder(
                 itemCount: snapshot.data!.length,
-                gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                  maxCrossAxisExtent: width / 2,
-                  crossAxisSpacing: 10.0,
-                  mainAxisSpacing: 10.0,
-                ),
+                gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(maxCrossAxisExtent: 200, crossAxisSpacing: 10.0, mainAxisSpacing: 10.0, childAspectRatio: 1.0),
                 itemBuilder: (context, index) {
                   final ImageModel item = snapshot.data![index];
-                  return Column(
-                    children: [
-                      PhotoPreview(
-                        item: item,
-                        tag: item.largeImageURL ?? '',
-                        size: (width / 2) - 50.0,
-                        onTap: () {
-                          Get.to(
-                            () => PhotoDetailPage(
-                              photo: item.largeImageURL ?? '',
-                            ),
-                          );
-                        },
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          StatBanner(
-                            icon: AppIcons.like,
-                            title: item.likes.toString(),
-                          ),
-                          StatBanner(
-                            icon: AppIcons.view,
-                            title: item.views.toString(),
-                          )
-                        ],
-                      )
-                    ],
+                  return PhotoPreview(
+                    item: item,
+                    tag: item.largeImageURL ?? '',
+                    onTap: () {
+                      Get.to(
+                        () => PhotoDetailPage(
+                          photo: item.largeImageURL ?? '',
+                        ),
+                      );
+                    },
                   );
                 },
               ),

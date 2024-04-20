@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class StatBanner extends StatelessWidget {
+class StateBanner extends StatelessWidget {
   final IconData icon;
   final String title;
 
-  const StatBanner({
+  const StateBanner({
     super.key,
     required this.icon,
     required this.title,
@@ -14,8 +14,8 @@ class StatBanner extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Icon(icon),
-        Text(title),
+        Icon(icon, color: Colors.white,),
+        Text(title, style: const TextStyle(color: Colors.white),),
       ],
     );
   }

@@ -7,16 +7,17 @@ import 'dart:convert' show jsonDecode;
 class HomeController extends GetxController {
   Future<List<ImageModel>?> fetchData() async {
     final response = await http.get(Uri.parse(AppUrl.baseURL));
-    try{
+    try {
       if (response.statusCode == 200) {
         final List data = (jsonDecode(response.body) as Map)['hits'];
         return data
-            .map((e) => ImageModel.fromJson(Map<String, dynamic>.from(e as Map)))
+            .map(
+                (e) => ImageModel.fromJson(Map<String, dynamic>.from(e as Map)))
             .toList();
       } else {
         return null;
       }
-    }catch(e){
+    } catch (e) {
       return null;
     }
   }
