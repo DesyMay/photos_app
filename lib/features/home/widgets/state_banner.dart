@@ -14,8 +14,14 @@ class StateBanner extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Icon(icon, color: Colors.white,),
-        Text(title, style: const TextStyle(color: Colors.white),),
+        Icon(
+          icon,
+          color: Colors.white,
+        ),
+        Text(
+          title,
+          style: const TextStyle(color: Colors.white),
+        ),
       ],
     );
   }

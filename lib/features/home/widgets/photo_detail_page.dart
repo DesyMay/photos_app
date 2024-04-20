@@ -1,4 +1,5 @@
-import 'package:cached_network_image/cached_network_image.dart' show CachedNetworkImageProvider;
+import 'package:cached_network_image/cached_network_image.dart'
+    show CachedNetworkImageProvider;
 import 'package:flutter/cupertino.dart' show CupertinoActivityIndicator;
 import 'package:flutter/material.dart';
 import 'package:photo_view/photo_view.dart';

@@ -1,13 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:photos_app/config/app_icon.dart';
 import 'package:photos_app/features/home/controllers/home_controller.dart';
 import 'package:photos_app/features/home/models/image_model.dart';
 import '../../../const/app_text.dart';
 import '../widgets/photo_detail_page.dart';
 import '../widgets/photo_preview.dart';
-import '../widgets/state_banner.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -15,8 +13,6 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(HomeController());
-    final size = MediaQuery.of(context).size;
-    final width = size.width;
     return Scaffold(
       appBar: AppBar(
         title: const Text(AppText.homeTitle),
@@ -37,10 +33,18 @@ class HomeScreen extends StatelessWidget {
             );
           } else if (snapshot.hasData) {
             return Padding(
-              padding: const EdgeInsets.only(left: 10.0, right: 10.0, bottom: 10.0,),
+              padding: const EdgeInsets.only(
+                left: 10.0,
+                right: 10.0,
+                bottom: 10.0,
+              ),
               child: GridView.builder(
                 itemCount: snapshot.data!.length,
-                gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(maxCrossAxisExtent: 200, crossAxisSpacing: 10.0, mainAxisSpacing: 10.0, childAspectRatio: 1.0),
+                gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                    maxCrossAxisExtent: 200,
+                    crossAxisSpacing: 10.0,
+                    mainAxisSpacing: 10.0,
+                    childAspectRatio: 1.0),
                 itemBuilder: (context, index) {
                   final ImageModel item = snapshot.data![index];
                   return PhotoPreview(
